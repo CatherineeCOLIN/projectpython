@@ -24,5 +24,5 @@ def afficher_mot_cache(mot, lettres_trouvees):
         if lettre in lettres_trouvees:
             mot_cache += lettre
         else:
-            mot_cache += "_"
+            mot_cache += "_"h
     return mot_cache

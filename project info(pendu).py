@@ -34,6 +34,71 @@ while a >= i:
     i += 1
 print(affichage)
 
+
+
+
+import tkinter as tk
+fenetre = tk.Tk()
+fenetre.title("Jeu du pendu")
+label = tk.Label(fenetre, text="Bienvenue dans le jeu du pendu", font=("helvetica", "20")) # création du widget
+label.grid() # positionnement du widget
+
+liste_mots = ["correction", "opportuniste", "ascenseur", "evrest", "situation", "saturation", "programmeur","aviateur","musicien"]
+
+import random 
+# Choisir un mot aléatoire de la liste
+mot_a_deviner = random.choice(liste_mots)
+
+# Initialiser les variables du jeu
+score = 0 
+proposition = 9
+
+affichage=""
+a = (len(mot_a_deviner))
+i = 1
+while a >= i:
+    affichage += "_"
+    i += 1
+print(affichage)
+
+#fonction qui dit si la lettre est bonne si erreur essai-1 si bon dit que la lettre est bonne faut juste essaiyer de la placer sur l'interface
+lettre = []
+mauvaises_lettre = []
+bonnes_lettres = []
+while score >= 0 and "_" in affichage:
+  lettre = input("entrer une lettre: ")
+  x = lettre.isalpha()
+  if len(lettre) > 1 and x == False:
+    print("erreur, recommencer")
+  elif len(lettre) <= 1 and x == True:
+    if lettre not in mot_a_deviner:
+      mauvaises_lettre += [lettre]
+      print("mauvaises lettres: ", mauvaises_lettre)
+    elif lettre in mot_a_deviner:
+      bonnes_lettres +=[lettre]
+      print("bonnes lettres: ", bonnes_lettres)
+      if lettre not in mot_a_deviner:
+        lettre -= 1
+        print ("tentatives restantes", lettre)
+      elif lettre in bonnes_lettres:
+        affichage += lettre 
+        if proposition < 8 :
+          break 
+          score += 1
+    
+
+print(lettre) 
+print("le mot est", affichage)
+fenetre.mainloop()#lancement de la fenetre 
+
+# Afficher les lettres correctes et incorrectes
+bonnes_lettres.configure(text="Lettres correctes: " + ", ".join(bonnes_lettres))
+mauvaises_lettre.configure(text="Lettres incorrectes: " + ", ".join(mauvaises_lettre))
+# Afficher les lettres du mot cachées ou dévoilées
+lettre.configure(text="Mot: " + " ".join(l if l in bonnes_lettres else "_" for l in mot_a_deviner))
+
+
+
 #fonctoin qui dit si la lettre est bonne si erreur essai-1 si bon dit que la lettre est bonne faut juste essaiyer de la placer sur l'interface
 lettre = []
 mauvaises_lettre = []

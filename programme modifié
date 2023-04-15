@@ -1,0 +1,104 @@
+import tkinter as tk
+fenetre = tk.Tk()
+fenetre.title("Jeu du pendu")
+label = tk.Label(fenetre, text="Bienvenue dans le jeu du pendu", font=("helvetica", "20")) # création du widget
+label.grid() # positionnement du widget
+
+liste_mots = ["correction", "opportuniste", "ascenseur", "evrest", "situation", "saturation", "programmeur","aviateur","musicien"]
+
+import random 
+# Choisir un mot aléatoire de la liste
+mot_a_deviner = random.choice(liste_mots)
+
+# Initialiser les variables du jeu
+score = 0 
+proposition = 9
+
+affichage=""
+a = (len(mot_a_deviner))
+i = 1
+while a >= i:
+    affichage += "_"
+    i += 1
+print(affichage)
+
+#fonction qui dit si la lettre est bonne si erreur essai-1 si bon dit que la lettre est bonne faut juste essaiyer de la placer sur l'interface
+lettre = []
+mauvaises_lettre = []
+bonnes_lettres = []
+while score >= 0 and "_" in affichage:
+  lettre = input("entrer une lettre: ")
+  x = lettre.isalpha()
+  if len(lettre) > 1 and x == False:
+    print("erreur, recommencer")
+  elif len(lettre) <= 1 and x == True:
+    if lettre not in mot_a_deviner:
+      mauvaises_lettre += [lettre]
+      print("mauvaises lettres: ", mauvaises_lettre)
+    elif lettre in mot_a_deviner:
+      bonnes_lettres +=[lettre]
+      print("bonnes lettres: ", bonnes_lettres)
+      if lettre not in mot_a_deviner:
+        lettre -= 1
+        print ("tentatives restantes", lettre)
+      elif lettre in bonnes_lettres:
+        affichage += lettre 
+        if proposition < 8 :
+          break 
+          score += 1
+    
+
+print(lettre) 
+print("le mot est", affichage)
+fenetre.mainloop()#lancement de la fenetre 
+
+# Afficher les lettres correctes et incorrectes
+bonnes_lettres.configure(text="Lettres correctes: " + ", ".join(bonnes_lettres))
+mauvaises_lettre.configure(text="Lettres incorrectes: " + ", ".join(mauvaises_lettre))
+# Afficher les lettres du mot cachées ou dévoilées
+lettre.configure(text="Mot: " + " ".join(l if l in bonnes_lettres else "_" for l in mot_a_deviner))
+
+
+
+
+import tkinter as Tk
+def pendu ():
+# Créer la fenêtre principale
+  fenetre = Tk()
+  fenetre.title("Jeu du pendu")
+  return mot_a_deviner #, maj_affichage()
+    # Effacer le canevas et redessiner le pendu
+fenetre.delete("all")
+if proposition > 0:
+  fenetre.create_line(20, 180, 100, 180)
+if proposition > 1 :
+  fenetre.create_line(60, 180, 60, 20)
+if proposition  > 2 :
+  fenetre.create_line(60, 20, 150, 20)
+if proposition  > 3 :
+  fenetre.create_line(150, 20, 150, 40)
+if proposition  > 4 :
+  fenetre.create_oval(135, 40, 165, 70)
+if proposition  > 5 :
+  fenetre.create_line(150, 70, 150, 110)
+if proposition  > 6 :
+  face = fenetre.create_oval(50, 50, 250, 250, width=2, outline='black')
+  left_eye = fenetre.create_oval(90, 100, 130, 140, fill='white', outline='black')
+  right_eye = fenetre.create_oval(170, 100, 210, 140, fill='white', outline='black')
+  mouth = fenetre.create_arc(90, 150, 210, 230, start=30, extent=120, style='arc', width=2)
+
+# Modifier le visage pour le rendre triste
+fenetre.itemconfigure(left_eye, extent=270, style='arc')
+fenetre.itemconfigure(right_eye, extent=270, style='arc')
+fenetre.move(mouth, 0, 20), #ache
+
+def jeu (mots, recherche, pendu, score): 
+  mots 
+  recherche 
+  pendu 
+  return score 
+  
+# Fonction pour afficher un message de fin de jeu
+def afficher_message(message):
+    message.configure(text=message)
+    message.pack()

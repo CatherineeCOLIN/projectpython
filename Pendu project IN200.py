@@ -4,11 +4,11 @@ import tkinter.messagebox
 import random
 import copy
 
-frequence = ["e", "s", "a", "r", "t", "i", "n", "u", "l", "o", "d", "c", "j", "b", "m", "p", "v", "q", "f", "g", "h", "x", "y", "z", "w", "k" ]
+frequence = ["e", "s", "a", "r", "t", "i", "n", "u", "l", "o", "d", "c", "j", "b", "m", "p", "v", "q", "f", "g", "h", "x", "y", "z", "w", "k" ] #fréquence des lettres les plus redondantes des mots de la langue française
 liste_de_mot = ["doublure","plongeur","prisonnier","ivoire","juteux","gencives","incliner","toast","sommeil","fondre","cadeau","mot","blouse","nourriture","saison","contagieux","cognitif","condamne","ennui","goutte","albinos","claustrophobie","lame","python","descente","construction","masseuse","guerison","suicide","lyncher","valise","meurtrier","pyjamas","extension","harpon","phylogenetique","fourmi","siamois"]# liste de mots
 tentative=8
 
-solution = random.choice(liste_de_mot)
+solution = random.choice(liste_de_mot) #choisit un mot aléatoire parmi la liste
 mot_tab=[]
 for i in solution:
     mot_tab.append(i)
